@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patience Beauty Salon — Accra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #faf7f2;
+    --warm-white: #fff9f3;
+    --black: #111010;
+    --dark: #1e1c1a;
+    --gold: #b89a6a;
+    --gold-light: #d4b896;
+    --text: #3a3530;
+    --muted: #8a8279;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 48px;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,154,106,0.15);
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    padding: 10px 24px;
+    background: var(--black);
+    color: var(--cream) !important;
+    border-radius: 2px;
+    font-size: 11px !important;
+    letter-spacing: 2px;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 420px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    padding: 16px 36px;
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 2px;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+
+  .btn-secondary {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+  }
+  .btn-secondary:hover { color: var(--gold); }
+  .btn-secondary::after { content: '→'; transition: transform 0.3s; }
+  .btn-secondary:hover::after { transform: translateX(4px); }
+
+  .hero-right {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    animation: fadeIn 1.2s 0.2s ease both;
+  }
+
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a2420 0%, #1a1510 50%, #2e2520 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .hero-img-placeholder .salon-icon {
+    font-size: 80px;
+    opacity: 0.6;
+  }
+
+  .hero-img-placeholder p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 48px;
+    left: -20px;
+    background: var(--cream);
+    padding: 20px 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .hero-badge .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-badge .label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 120px 80px;
+    background: var(--warm-white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.1;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--cream);
+    padding: 48px 36px;
+    transition: background 0.3s, transform 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .service-card:hover { background: var(--dark); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover .service-name { color: var(--cream); }
+  .service-card:hover .service-desc { color: var(--muted); }
+  .service-card:hover .service-price { color: var(--gold); }
+  .service-card:hover .service-icon { filter: brightness(2); }
+
+  .service-icon { font-size: 32px; margin-bottom: 20px; transition: filter 0.3s; }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+
+  .service-price {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  /* ── WHY US ── */
+  .why {
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-left { }
+
+  .why-left .section-header { text-align: left; margin-bottom: 48px; }
+
+  .why-points { display: flex; flex-direction: column; gap: 28px; }
+
+  .why-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid rgba(184,154,106,0.2);
+    border-radius: 2px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .why-point:hover { border-color: var(--gold); background: rgba(184,154,106,0.05); }
+
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 300;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .why-text h4 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .why-text p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .why-right {
+    background: var(--dark);
+    border-radius: 2px;
+    padding: 64px 48px;
+    text-align: center;
+  }
+
+  .why-right .big-icon { font-size: 64px; margin-bottom: 24px; }
+
+  .why-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--cream);
+    font-weight: 300;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .why-right p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .why-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+
+  .why-stat { text-align: center; }
+
+  .why-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--gold);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .why-stat .label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 120px 80px;
+    background: var(--dark);
+    text-align: center;
+  }
+
+  .testimonials .section-tag { color: var(--gold-light); }
+  .testimonials .section-title { color: var(--cream); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 64px auto 0;
+  }
+
+  .testimonial-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,154,106,0.2);
+    padding: 36px 28px;
+    border-radius: 2px;
+    text-align: left;
+    transition: border-color 0.3s;
+  }
+
+  .testimonial-card:hover { border-color: var(--gold); }
+
+  .stars { color: var(--gold); font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--cream);
+    line-height: 1.7;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .testimonial-author {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── BOOKING ── */
+  .booking {
+    padding: 120px 80px;
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .booking .section-title { margin-bottom: 16px; }
+
+  .booking-desc {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .booking-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: end;
+  }
+
+  .form-group { text-align: left; }
+
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--warm-white);
+    border: 1px solid rgba(184,154,106,0.3);
+    border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 64px 80px 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--cream);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand .logo span { color: var(--gold); }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 260px;
+  }
+
+  .footer-col h5 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col ul li a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+
+  .footer-col ul li a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .footer-bottom .made-by {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .footer-bottom .made-by span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 24px; }
+    .hero-right { height: 300px; }
+    .services { padding: 80px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why { grid-template-columns: 1fr; padding: 80px 24px; }
+    .testimonials { padding: 80px 24px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .booking { padding: 80px 24px; }
+    .booking-form { grid-template-columns: 1fr; }
+    footer { padding: 48px 24px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Patience<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Kasoa's Premier Beauty Salon</div>
+    <h1>Where Beauty<br>Meets <em>Elegance</em></h1>
+    <p class="hero-desc">Experience world-class hair care and beauty treatments in the heart of Accra. Our expert stylists are dedicated to bringing out your natural best.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Book Appointment</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="photo7.jpg" alt="Hair Salon" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div class="hero-badge">
+      <div class="num">500+</div>
+      <div class="label">Happy Clients</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our <em>Signature</em> Services</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card" style="padding:0;overflow:hidden;">
+      <img src="photo4.jpg" alt="Hair Styling" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="padding:28px 24px;"><div class="service-name">Hair Styling</div>
+      <p class="service-desc">From classic cuts to modern styles, our stylists craft looks that perfectly suit your personality and lifestyle.</p>
+      <div class="service-price">From GHS 80</div></div>
+    </div>
+    <div class="service-card" style="padding:0;overflow:hidden;">
+      <img src="photo5.jpg" alt="Hair Treatment" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="padding:28px 24px;"><div class="service-name">Hair Treatment</div>
+      <p class="service-desc">Nourishing treatments that restore shine, strength and vitality to your hair using premium products.</p>
+      <div class="service-price">From GHS 120</div></div>
+    </div>
+    <div class="service-card" style="padding:0;overflow:hidden;">
+      <img src="photo7.jpg" alt="Braiding" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="padding:28px 24px;"><div class="service-name">Braiding &amp; Weaving</div>
+      <p class="service-desc">Expert braiding and weaving services including box braids, cornrows, twists and beautiful weave installations.</p>
+      <div class="service-price">From GHS 150</div></div>
+    </div>
+    <div class="service-card" style="padding:0;overflow:hidden;">
+      <img src="myphoto.jpg" alt="Nail Care" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="padding:28px 24px;"><div class="service-name">Nail Care</div>
+      <p class="service-desc">Complete nail care including manicures, pedicures and gel extensions for that perfect finishing touch.</p>
+      <div class="service-price">From GHS 60</div></div>
+    </div>
+    <div class="service-card" style="padding:0;overflow:hidden;">
+      <img src="myphoto2.jpg" alt="Facials" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="padding:28px 24px;"><div class="service-name">Facials &amp; Skincare</div>
+      <p class="service-desc">Rejuvenating facial treatments tailored for African skin tones, leaving you glowing and refreshed.</p>
+      <div class="service-price">From GHS 100</div></div>
+    </div>
+    <div class="service-card" style="padding:0;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80" alt="Bridal" style="width:100%;height:180px;object-fit:cover;display:block;">
+      <div style="padding:28px 24px;"><div class="service-name">Bridal Package</div>
+      <p class="service-desc">Complete bridal beauty packages for your special day — hair, makeup, nails and more, all in one place.</p>
+      <div class="service-price">From GHS 800</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="about">
+  <div class="why">
+    <div class="why-left">
+      <div class="section-header">
+        <div class="section-tag">Why Choose Us</div>
+        <h2 class="section-title">The <em>Patience</em><br>Difference</h2>
+      </div>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-num">01</div>
+          <div class="why-text">
+            <h4>Expert Stylists</h4>
+            <p>Our team of trained professionals bring years of experience and passion to every appointment.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-num">02</div>
+          <div class="why-text">
+            <h4>Premium Products</h4>
+            <p>We use only the finest hair and beauty products suited for all hair types and textures.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-num">03</div>
+          <div class="why-text">
+            <h4>Relaxing Atmosphere</h4>
+            <p>Enjoy a calm, welcoming environment where you can relax and be pampered from head to toe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right" style="padding:0;overflow:hidden;">
+      <img src="photo3.jpg" alt="Salon" style="width:100%;height:220px;object-fit:cover;display:block;">
+      <div style="padding:36px 48px;">
+      <h3>Beauty is our craft</h3>
+      <p>We believe every woman deserves to feel beautiful and confident. At Patience, we make that happen every single day.</p>
+      <div class="why-stats">
+        <div class="why-stat">
+          <div class="num">5+</div>
+          <div class="label">Years Experience</div>
+        </div>
+        <div class="why-stat">
+          <div class="num">500+</div>
+          <div class="label">Happy Clients</div>
+        </div>
+        <div class="why-stat">
+          <div class="num">15+</div>
+          <div class="label">Services</div>
+        </div>
+        <div class="why-stat">
+          <div class="num">4.9★</div>
+          <div class="label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-tag">Client Love</div>
+  <h2 class="section-title" style="color: var(--cream);">What Our <em>Clients</em> Say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"The best salon experience I've had in Accra. My hair has never looked this amazing. I won't go anywhere else!"</p>
+      <div class="testimonial-author">Abena K. — East Legon</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"They did my bridal hair and makeup beautifully. Everyone at my wedding was asking who did my look. Highly recommend!"</p>
+      <div class="testimonial-author">Efua M. — Tema</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Professional, friendly and so talented. My box braids lasted for weeks and looked perfect from day one."</p>
+      <div class="testimonial-author">Akosua D. — Osu</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="section-tag">Ready to Look Amazing?</div>
+  <h2 class="section-title">Book Your <em>Appointment</em></h2>
+  <p class="booking-desc">Reserve your spot today and let us take care of the rest.<br>Walk-ins welcome, appointments preferred.</p>
+  <div class="booking-form">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g. Abena Mensah">
+    </div>
+    <div class="form-group">
+      <label>Service</label>
+      <select>
+        <option>Hair Styling</option>
+        <option>Hair Treatment</option>
+        <option>Braiding & Weaving</option>
+        <option>Nail Care</option>
+        <option>Facials</option>
+        <option>Bridal Package</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Preferred Date</label>
+      <input type="date">
+    </div>
+    <a href="https://wa.me/233597468119" class="btn-primary" style="white-space:nowrap; display:flex; align-items:center; justify-content:center;">
+      Book via WhatsApp
+    </a>
+  </div>
+  <p style="margin-top:24px; font-size:13px; color:var(--muted);">📍 Located in Kasoa, Ghana &nbsp;·&nbsp; 📞 +233 59 746 8119 &nbsp;·&nbsp; Open Mon–Sat: 8am – 7pm</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Patience<span>.</span></div>
+      <p>Kasoa's premier beauty destination. We exist to make every woman feel confident, beautiful and celebrated.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#">Hair Styling</a></li>
+        <li><a href="#">Braiding</a></li>
+        <li><a href="#">Nail Care</a></li>
+        <li><a href="#">Facials</a></li>
+        <li><a href="#">Bridal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Visit Us</h5>
+      <ul>
+        <li><a href="#">Kasoa, Ghana</a></li>
+        <li><a href="#">Mon–Sat: 8am–7pm</a></li>
+        <li><a href="#">Sunday: Closed</a></li>
+        <li><a href="#">+233 59 746 8119</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Follow Us</h5>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Patience Beauty Salon. All rights reserved.</p>
+    <p class="made-by">Website by <span>Your Business Name</span></p>
+  </div>
+</footer>
+
+</body>
+</html>
